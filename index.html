@@ -5,8 +5,16 @@
   <title>Mermaid Preview</title>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <script src="./mermaid.min.js"></script>
-  <script src="http://localhost:35730/livereload.js"></script>
+  <!--
+  <script src="http://localhost:35729/livereload.js"></script>
+  -->
   <script>
+    const lrPort = 35729;
+    const host = location.hostname;
+    const script = document.createElement("script");
+    script.src = 'http://' + host + ':' + lrPort + '/livereload.js';
+    document.head.appendChild(script);
+  
     mermaid.initialize({ startOnLoad: true });
   </script>
 </head>
@@ -19,10 +27,14 @@ pengelolaKantin: pengelola kantin
 pemilikToko: pemilik toko
 santri: santri
 database: database
+admin: admin
 state waliSantri {
   waliSantri_login: login
   waliSantri_otp: otp
   waliSantri_transfer: transfer
+  waliSantri_dataKeuanganAnaknya: data keuangan anaknya
+  waliSantri_total: total
+  waliSantri_riwayatTransaksi: riwayat transaksi
 }
 state pemegangUang {
   pemegangUang_diterimaZen: diterima zen
@@ -41,11 +53,17 @@ state santri {
   santri_lihatkanQrCode: lihatkan qr code
   santri_bisaBeli: bisa beli
   santri_tidakBisaBeli: tidak bisa beli
+  santri_lanjutBeli: lanjut beli
 }
 state database {
   database_dataSantri: data santri
   database_sesuai: sesuai
   database_limitPekanan: limit pekanan
+  database_cekOtp: cek otp
+  database_transaksi: transaksi
+}
+state admin {
+  admin_inputDataSantri: input data santri
 }
 waliSantri_login --> waliSantri_otp
 waliSantri_otp --> waliSantri_transfer
@@ -62,6 +80,13 @@ database_limitPekanan --> santri_bisaBeli: Tidak
 database_limitPekanan --> santri_tidakBisaBeli: Iya
 pemegangUang_diterimaZen --> pemegangUang_5Juta: setiap
 pemegangUang_5Juta --> pengelolaKantin_cashPengelola
+waliSantri_otp --> waliSantri_dataKeuanganAnaknya
+waliSantri_dataKeuanganAnaknya --> waliSantri_total
+waliSantri_dataKeuanganAnaknya --> waliSantri_riwayatTransaksi
+admin_inputDataSantri --> database_dataSantri: insya Allah berkah
+santri_bisaBeli --> santri_lanjutBeli
+waliSantri_otp --> database_cekOtp
+santri_lanjutBeli --> database_transaksi
   </div>
 </body>
 </html>

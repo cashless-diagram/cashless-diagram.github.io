@@ -13,4 +13,10 @@ database_limitPekanan --> santri_bisaBeli: Tidak
 database_limitPekanan --> santri_tidakBisaBeli: Iya
 pemegangUang_diterimaZen --> pemegangUang_5Juta: setiap
 pemegangUang_5Juta --> pengelolaKantin_cashPengelola
-
+waliSantri_otp --> waliSantri_dataKeuanganAnaknya
+waliSantri_dataKeuanganAnaknya --> waliSantri_total
+waliSantri_dataKeuanganAnaknya --> waliSantri_riwayatTransaksi
+admin_inputDataSantri --> database_dataSantri: insya Allah berkah
+santri_bisaBeli --> santri_lanjutBeli
+waliSantri_otp --> database_cekOtp
+santri_lanjutBeli --> database_transaksi
