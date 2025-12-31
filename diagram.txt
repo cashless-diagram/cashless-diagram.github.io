@@ -13,3 +13,4 @@ database_limitPekanan --> santri_bisaBeli: Tidak
 database_limitPekanan --> santri_tidakBisaBeli: Iya
 pemegangUang_diterimaZen --> pemegangUang_5Juta: setiap
 pemegangUang_5Juta --> pengelolaKantin_cashPengelola
+
