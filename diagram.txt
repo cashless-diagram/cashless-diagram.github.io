@@ -1,0 +1,15 @@
+waliSantri_login --> waliSantri_otp
+waliSantri_otp --> waliSantri_transfer
+waliSantri_transfer --> pemegangUang_diterimaZen
+pemegangUang_akhirBulan --> pengelolaKantin_cashPengelola
+pengelolaKantin_cashPengelola --> pemilikToko_bagiHasil
+santri_beli --> santri_lihatkanQrCode
+santri_lihatkanQrCode --> pengelolaKantin_melihatQrCode
+pemegangUang_diterimaZen --> pemegangUang_akhirBulan: setiap
+pengelolaKantin_melihatQrCode --> database_dataSantri
+database_dataSantri --> database_sesuai
+database_sesuai --> database_limitPekanan
+database_limitPekanan --> santri_bisaBeli: Tidak
+database_limitPekanan --> santri_tidakBisaBeli: Iya
+pemegangUang_diterimaZen --> pemegangUang_5Juta: setiap
+pemegangUang_5Juta --> pengelolaKantin_cashPengelola

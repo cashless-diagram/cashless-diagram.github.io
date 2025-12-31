@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Mermaid Preview</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <script src="./mermaid.min.js"></script>
+  <script src="http://localhost:35730/livereload.js"></script>
+  <script>
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+</head>
+<body>
+  <div class="mermaid">
+stateDiagram-v2
+waliSantri: wali santri
+pemegangUang: pemegang uang
+pengelolaKantin: pengelola kantin
+pemilikToko: pemilik toko
+santri: santri
+database: database
+state waliSantri {
+  waliSantri_login: login
+  waliSantri_otp: otp
+  waliSantri_transfer: transfer
+}
+state pemegangUang {
+  pemegangUang_diterimaZen: diterima zen
+  pemegangUang_akhirBulan: akhir bulan
+  pemegangUang_5Juta: 5 juta
+}
+state pengelolaKantin {
+  pengelolaKantin_cashPengelola: cash pengelola
+  pengelolaKantin_melihatQrCode: melihat qr code
+}
+state pemilikToko {
+  pemilikToko_bagiHasil: bagi hasil
+}
+state santri {
+  santri_beli: beli
+  santri_lihatkanQrCode: lihatkan qr code
+  santri_bisaBeli: bisa beli
+  santri_tidakBisaBeli: tidak bisa beli
+}
+state database {
+  database_dataSantri: data santri
+  database_sesuai: sesuai
+  database_limitPekanan: limit pekanan
+}
+waliSantri_login --> waliSantri_otp
+waliSantri_otp --> waliSantri_transfer
+waliSantri_transfer --> pemegangUang_diterimaZen
+pemegangUang_akhirBulan --> pengelolaKantin_cashPengelola
+pengelolaKantin_cashPengelola --> pemilikToko_bagiHasil
+santri_beli --> santri_lihatkanQrCode
+santri_lihatkanQrCode --> pengelolaKantin_melihatQrCode
+pemegangUang_diterimaZen --> pemegangUang_akhirBulan: setiap
+pengelolaKantin_melihatQrCode --> database_dataSantri
+database_dataSantri --> database_sesuai
+database_sesuai --> database_limitPekanan
+database_limitPekanan --> santri_bisaBeli: Tidak
+database_limitPekanan --> santri_tidakBisaBeli: Iya
+pemegangUang_diterimaZen --> pemegangUang_5Juta: setiap
+pemegangUang_5Juta --> pengelolaKantin_cashPengelola
+  </div>
+</body>
+</html>
