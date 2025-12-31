@@ -20,3 +20,4 @@ admin_inputDataSantri --> database_dataSantri: insya Allah berkah
 santri_bisaBeli --> santri_lanjutBeli
 waliSantri_otp --> database_cekOtp
 santri_lanjutBeli --> database_transaksi
+desainer_buatQrCode --> santri_lihatkanQrCode

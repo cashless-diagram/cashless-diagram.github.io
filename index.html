@@ -34,6 +34,7 @@ pemilikToko: pemilik toko
 santri: santri
 database: database
 admin: admin
+desainer: desainer
 state waliSantri {
   waliSantri_login: login
   waliSantri_otp: otp
@@ -71,6 +72,9 @@ state database {
 state admin {
   admin_inputDataSantri: input data santri
 }
+state desainer {
+  desainer_buatQrCode: buat qr code
+}
 waliSantri_login --> waliSantri_otp
 waliSantri_otp --> waliSantri_transfer
 waliSantri_transfer --> pemegangUang_diterimaZen
@@ -93,6 +97,7 @@ admin_inputDataSantri --> database_dataSantri: insya Allah berkah
 santri_bisaBeli --> santri_lanjutBeli
 waliSantri_otp --> database_cekOtp
 santri_lanjutBeli --> database_transaksi
+desainer_buatQrCode --> santri_lihatkanQrCode
   </div>
 </body>
 </html>
